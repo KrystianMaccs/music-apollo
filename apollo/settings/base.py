@@ -34,11 +34,18 @@ DJANGO_APPS = [
 SITE_ID = 1
 
 LOCAL_APPS = [
-    'apps.users',
+    "apps.users",
+    "apps.commons",
 ]
 
 THIRD_PARTY_APPS = [
-    'rest_framework',
+    "rest_framework",
+    "django_filters",
+    "django_countries",
+    "phonenumber_field",
+    "djoser",
+    "rest_framework_simplejwt",
+    "djcelery_email",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
