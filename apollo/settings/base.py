@@ -36,6 +36,7 @@ SITE_ID = 1
 LOCAL_APPS = [
     "apps.users",
     "apps.commons",
+    "apps.music",
 ]
 
 THIRD_PARTY_APPS = [
