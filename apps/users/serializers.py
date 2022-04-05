@@ -10,14 +10,6 @@ User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-    gender = serializers.CharField(source="profile.gender")
-    phone_number = PhoneNumberField(source="profile.phone_number")
-    profile_photo = serializers.ImageField(source="profile.profile_photo")
-    country = CountryField(source="profile.country")
-    city = serializers.CharField(source="profile.city")
-    first_name = serializers.SerializerMethodField()
-    last_name = serializers.SerializerMethodField()
-    full_name = serializers.SerializerMethodField(source="get_full_name")
 
     class Meta:
         model = User
@@ -41,11 +33,11 @@ class UserSerializer(serializers.ModelSerializer):
     def get_last_name(self, obj):
         return obj.last_name.title()
 
-    def to_representation(self, instance):
+    """def to_representation(self, instance):
         representation = super(UserSerializer, self).to_representation(instance)
         if instance.is_superuser:
             representation["admin"] = True
-        return representation
+        return representation"""
 
 
 class CreateUserSerializer(UserCreateSerializer):
