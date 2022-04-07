@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from rest_framework import generics
+from drf_yasg.utils import swagger_auto_schema
 from django.contrib.auth import get_user_model
-from apps.users.serializers import UserSerializer, CreateUserSerializer
+from apps.users.serializers import UserSerializer
 
 
 User = get_user_model()
 
 
 class CreateUserView(generics.CreateAPIView):
-    model = User
-    #permission_classes = [permissions.AllowAny # Or anon users can't register]
+    queryset = User.objects.all()
+    #permission_classes = [permissions.AllowAny] # Or anon users can't register]
     serializer_class = UserSerializer
 
 class UpdateUserView(generics.RetrieveUpdateAPIView):

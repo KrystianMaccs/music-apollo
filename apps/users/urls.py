@@ -3,7 +3,7 @@ from apps.users.views import CreateUserView, ListUserView, UpdateUserView, Delet
 
 urlpatterns = [
     path('create',CreateUserView.as_view()),
-    path('list', ListUserView.as_view()),
+    path('create/list', ListUserView.as_view()),
     path('<int:pk>',UpdateUserView.as_view()),
     path('<int:pk>/delete', DeleteUserView.as_view()),
 ]
