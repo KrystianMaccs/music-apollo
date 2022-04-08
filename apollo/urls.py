@@ -25,6 +25,7 @@ urlpatterns = [
     url('redocs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     url('auth/', include('djoser.urls')),
     url('auth/', include('djoser.urls.jwt')),
+    url('auth/', include('djoser.social.urls')),
     url('auth/', include('djoser.urls.authtoken')),
     path('admin/', admin.site.urls),
     path("", include("apps.users.urls")),
