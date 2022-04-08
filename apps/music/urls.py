@@ -1,14 +1,5 @@
 from django.urls import path
-from apps.music.views import (
-    CollectionCreateView,
-    CollectionListView,
-    CollectionEditView,
-    CollectionDeleteView,
-    SongCreateView,
-    SongListView,
-    SongEditView,
-    SongDeleteView
-)
+from .views import *
 
 urlpatterns = [
     path('create-collection', CollectionCreateView.as_view()),

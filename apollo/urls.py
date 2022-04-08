@@ -23,6 +23,9 @@ schema_view = get_schema_view(
 urlpatterns = [
     url('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     url('redocs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    url('auth/', include('djoser.urls')),
+    url('auth/', include('djoser.urls.jwt')),
+    url('auth/', include('djoser.urls.authtoken')),
     path('admin/', admin.site.urls),
     path("", include("apps.users.urls")),
     path("music/", include("apps.music.urls")),
