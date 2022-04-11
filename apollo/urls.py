@@ -23,13 +23,13 @@ schema_view = get_schema_view(
 urlpatterns = [
     url('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     url('redocs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    url('auth/', include('djoser.urls')),
-    url('auth/', include('djoser.urls.jwt')),
-    url('auth/', include('djoser.social.urls')),
-    url('auth/', include('djoser.urls.authtoken')),
+    url('api/v1/auth/', include('djoser.urls')),
+    url('api/v1/auth/', include('djoser.urls.jwt')),
+    url('api/v1/auth/', include('djoser.social.urls')),
+    url('api/v1/auth/', include('djoser.urls.authtoken')),
     path('admin/', admin.site.urls),
-    path("", include("apps.users.urls")),
-    path("music/", include("apps.music.urls")),
+    path("api/v1/users/", include("apps.users.urls")),
+    path("api/v1/music/", include("apps.music.urls")),
 ]
 
 admin.site.site_header = "Apollo Admin"
