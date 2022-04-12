@@ -9,10 +9,10 @@ from rest_framework.permissions import IsAuthenticated
 User = get_user_model()
 
 
-class CreateUserView(generics.CreateAPIView):
+"""class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = []
-    serializer_class = UserSerializers
+    serializer_class = UserSerializers"""
 
 class UpdateUserView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
