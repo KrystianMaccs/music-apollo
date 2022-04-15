@@ -28,7 +28,7 @@ urlpatterns = [
     url('api/v1/auth/', include('djoser.social.urls')),
     url('api/v1/auth/', include('djoser.urls.authtoken')),
     path('admin/', admin.site.urls),
-    path("api/v1/users/", include("apps.users.urls")),
+    path("api/v1/profiles/", include("apps.profiles.urls")),
     path("api/v1/music/", include("apps.music.urls")),
 ]
 

@@ -45,6 +45,7 @@ LOCAL_APPS = [
     "apps.users",
     "apps.commons",
     "apps.music",
+    "apps.profiles"
 ]
 
 THIRD_PARTY_APPS = [
@@ -223,9 +224,9 @@ DJOSER = {
         "your redirect url",
     ],
     "SERIALIZERS": {
-        "user_create": "accounts.serializers.UserCreateSerializer",  # custom serializer
-        "user": "djoser.serializers.UserSerializer",
-        "current_user": "djoser.serializers.UserSerializer",
-        "user_delete": "djoser.serializers.UserSerializer",
+        "user_create": "apps.users.serializers.CreateUserSerializer,",
+        "user": "apps.users.serializers.UserSerializer",
+        "current_user": "apps.users.serializers.UserSerializer",
+        "user_delete": "djoser.serializers.UserDeleteSerializer",
     },
 }
