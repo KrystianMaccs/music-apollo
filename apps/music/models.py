@@ -5,13 +5,15 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-class TopCollectionManager(models.Manager):
+class PopularCollectionManager(models.Manager):
     def get_query_set(self):
-        return super(TopCollectionManager, self).get_query_set().filter(availability=1)
+        return super(PopularCollectionManager, self).get_query_set().filter(availability=1)
 
 class Collection(TimeStampedUUIDModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT, max_length=50)
     genre = models.CharField(max_length=120, blank=False, null=False)
+
+    genre = PopularCollectionManager()
 
     def __str__(self):
         return self.genre
