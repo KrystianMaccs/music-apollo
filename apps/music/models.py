@@ -13,7 +13,7 @@ class Collection(TimeStampedUUIDModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT, max_length=50)
     genre = models.CharField(max_length=120, blank=False, null=False)
 
-    genre = PopularCollectionManager()
+    genres = PopularCollectionManager()
 
     def __str__(self):
         return self.genre
