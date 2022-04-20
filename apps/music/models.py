@@ -7,7 +7,7 @@ User = get_user_model()
 
 class PopularCollectionManager(models.Manager):
     def get_query_set(self):
-        return super(PopularCollectionManager, self).get_query_set().filter(availability=1)
+        return super(PopularCollectionManager, self).get_query_set().filter('genre')
 
 class Collection(TimeStampedUUIDModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT, max_length=50)
@@ -17,6 +17,12 @@ class Collection(TimeStampedUUIDModel):
 
     def __str__(self):
         return self.genre
+
+
+class TopSongManager(models.Manager):
+    def get_query_set(self):
+        return super(TopSongManager, self).get_query_set().filter('track')
+
 
 class Song(TimeStampedUUIDModel):
     track = models.FileField(upload_to="mediafiles/", null=False, blank=False, default=True)
