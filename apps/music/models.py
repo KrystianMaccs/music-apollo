@@ -31,6 +31,8 @@ class Song(TimeStampedUUIDModel):
     artiste = models.CharField(max_length=50, null=False, blank=False, default="Juice WRLD")
     artwork = models.ImageField(upload_to="staticfiles/", blank=True, default=True)
 
+    tracks = TopSongManager()
+
 
     def __str__(self):
         return self.title
