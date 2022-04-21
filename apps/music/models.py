@@ -5,9 +5,17 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+class CollectionQuerySet(models.QuerySet):
+    def genre(self):
+        return self.annotate(genre=genre("name")).filter(genre__gte=10)
+
 class PopularCollectionManager(models.Manager):
-    def get_query_set(self):
-        return super(PopularCollectionManager, self).get_query_set().filter('genre')
+    def get_queryset(self):
+        return CollectionQuerySet(self.model, using=self._db)
+
+    def genre(self):
+        return self.get_queryset().genre()
+
 
 class Collection(TimeStampedUUIDModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT, max_length=50)
@@ -19,10 +27,16 @@ class Collection(TimeStampedUUIDModel):
         return self.genre
 
 
-class TopSongManager(models.Manager):
-    def get_query_set(self):
-        return super(TopSongManager, self).get_query_set().filter('track')
+class SongQuerySet(models.QuerySet):
+    def genre(self):
+        return self.annotate(genre=genre("name")).filter(track__gte=10)
 
+class TopSongManager(models.Manager):
+    def get_queryset(self):
+        return SongQuerySet(self.model, using=self._db)
+
+    def genre(self):
+        return self.get_queryset().track()
 
 class Song(TimeStampedUUIDModel):
     track = models.FileField(upload_to="mediafiles/", null=False, blank=False, default=True)
