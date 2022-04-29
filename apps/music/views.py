@@ -13,6 +13,12 @@ class CollectionCreateView(generics.CreateAPIView):
     permission_classes = (IsAuthenticated,)
 
 
+class CollectionListView(generics.ListAPIView):
+    queryset = Collection.genres.all()
+    serializer_class = CollectionSerializer
+    permission_classes = []
+
+
 class CollectionEditView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Collection.genres.all()
     serializer_class = CollectionSerializer
@@ -28,16 +34,10 @@ class SongCreateView(generics.CreateAPIView):
 class SongListView(generics.ListAPIView):
     queryset = Song.tracks.all()
     serializer_class = SongSerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = []
 
 
-class SongEditView(generics.RetrieveUpdateAPIView):
-    queryset = Song.tracks.all()
-    serializer_class = SongSerializer
-    permission_classes = (IsAuthenticated,)
-
-
-class SongDeleteView(generics.DestroyAPIView):
+class SongEditView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Song.tracks.all()
     serializer_class = SongSerializer
     permission_classes = (IsAuthenticated,)
