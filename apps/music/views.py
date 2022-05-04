@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import generics, permissions
@@ -5,6 +6,7 @@ from rest_framework import generics, permissions
 from apps.music.models import Collection, Song
 from apps.music.serializers import CollectionSerializer, SongSerializer
 
+User = get_user_model()
 # from rest_framework.permissions import IsAuthenticated
 
 
