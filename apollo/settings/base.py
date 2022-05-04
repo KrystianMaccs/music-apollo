@@ -47,7 +47,8 @@ LOCAL_APPS = [
     "apps.users",
     "apps.commons",
     "apps.music",
-    "apps.profiles" "apps.player",
+    "apps.profiles",
+    "apps.player",
 ]
 
 THIRD_PARTY_APPS = [

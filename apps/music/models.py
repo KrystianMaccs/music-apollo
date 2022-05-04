@@ -8,7 +8,7 @@ User = get_user_model()
 
 class CollectionQuerySet(models.QuerySet):
     def genre(self):
-        return self.filter(user=user).order_by("-created")
+        return self.filter(int=user).order_by("-created")
 
 
 class PopularCollectionManager(models.Manager):

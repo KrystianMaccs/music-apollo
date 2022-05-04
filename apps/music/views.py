@@ -8,13 +8,13 @@ from apps.music.serializers import CollectionSerializer, SongSerializer
 # from rest_framework.permissions import IsAuthenticated
 
 
-class CollectionListCreateView(generics.ListCreateAPIView):
+class CollectionListView(generics.ListCreateAPIView):
     serializer_class = CollectionSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         user = self.request.user
-        return Todo.genres.filter(user=user).order_by("-created")
+        return Collection.genres.filter(user=user).order_by("-created")
 
 
 class CollectionEditView(generics.RetrieveUpdateDestroyAPIView):
@@ -23,7 +23,7 @@ class CollectionEditView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Todo.objects.filter(user=user).order_by("-created")
+        return Collection.genres.filter(user=user).order_by("-created")
 
 
 class SongCreateView(generics.ListCreateAPIView):
@@ -32,7 +32,7 @@ class SongCreateView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Todo.objects.filter(user=user).order_by("-created")
+        return Song.tracks.filter(user=user).order_by("-created")
 
 
 class SongEditView(generics.RetrieveUpdateDestroyAPIView):
@@ -41,4 +41,4 @@ class SongEditView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Todo.objects.filter(user=user).order_by("-created")
+        return Song.tracks.filter(user=user).order_by("-created")
