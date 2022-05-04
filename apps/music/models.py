@@ -15,9 +15,6 @@ class PopularCollectionManager(models.Manager):
     def get_queryset(self):
         return CollectionQuerySet(self.model, using=self._db)
 
-    def genre(self):
-        return self.get_queryset().genre()
-
 
 class Collection(TimeStampedUUIDModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT, max_length=50)
@@ -37,9 +34,6 @@ class SongQuerySet(models.QuerySet):
 class TopSongManager(models.Manager):
     def get_queryset(self):
         return SongQuerySet(self.model, using=self._db)
-
-    def genre(self):
-        return self.get_queryset().track()
 
 
 class Song(TimeStampedUUIDModel):
